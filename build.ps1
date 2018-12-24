@@ -1,0 +1,1 @@
+dotnet pack ./src/Postmark -c Release -o ./../../build/Postmark

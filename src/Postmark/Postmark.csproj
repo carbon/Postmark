@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Postmark</AssemblyName>
+    <VersionPrefix>0.13.0</VersionPrefix>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <LangVersion>7.3</LangVersion>
+
+    <!-- Package Properties-->
+    <Authors>iamcarbon</Authors>
+    <Copyright>© Jason Nelson</Copyright>
+    <Description>A modern netstandard library for Postmark.</Description>
+    <PackageId>Carbon.Postmark</PackageId>
+    <PackageTags>postmark</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Carbon.Json" Version="1.9.0" />
+  </ItemGroup>
+
+</Project>
