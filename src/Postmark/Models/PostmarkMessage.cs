@@ -5,10 +5,10 @@ namespace Postmark
 {
     public partial class PostmarkMessage
     {
-        // [Required]
+        [DataMember(IsRequired = true)]
         public string From { get; set; }
 
-        // [Required]
+        [DataMember(IsRequired = true)]
         public string To { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
