@@ -10,6 +10,7 @@
     <Authors>iamcarbon</Authors>
     <Copyright>© Jason Nelson</Copyright>
     <Description>A modern netstandard library for Postmark.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageId>Carbon.Postmark</PackageId>
     <PackageTags>postmark</PackageTags>
   </PropertyGroup>
