@@ -69,7 +69,6 @@ namespace Postmark
             }
         }
 
-
         private static string Serialize(Dictionary<string, string> data)
         {
             var sb = new StringBuilder();
