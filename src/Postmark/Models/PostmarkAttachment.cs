@@ -4,7 +4,9 @@ namespace Postmark
 {
     public class PostmarkAttachment
     {
+#nullable disable
         public PostmarkAttachment() { }
+#nullable enable
 
         public PostmarkAttachment(string name, byte[] content, string contentType)
         {

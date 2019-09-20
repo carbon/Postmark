@@ -5,7 +5,9 @@ namespace Postmark
 {
     public class PostmarkHeader
     {
+#nullable disable
         public PostmarkHeader() { }
+#nullable enable
 
         public PostmarkHeader(string name, string value)
         {

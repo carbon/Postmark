@@ -12,12 +12,14 @@ namespace Postmark
     {
         const string endpoint = "https://api.postmarkapp.com";
 
-        private readonly string apiKey;
         private readonly HttpClient httpClient;
 
         public PostmarkClient(string apiKey)
         {
-            this.apiKey = apiKey ?? throw new ArgumentNullException(nameof(apiKey));
+            if (apiKey is null)
+            {
+                throw new ArgumentNullException(nameof(apiKey));
+            }
 
             this.httpClient = new HttpClient {
                 DefaultRequestHeaders = {
