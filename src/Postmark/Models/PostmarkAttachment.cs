@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace Postmark
+﻿namespace Postmark
 {
     public class PostmarkAttachment
     {
@@ -15,13 +13,10 @@ namespace Postmark
             ContentType = contentType;
         }
 
-        [DataMember(Name = "Name")]
         public string Name { get; set; }
 
-        [DataMember(Name = "Content")]
         public byte[] Content { get; set; }
 
-        [DataMember(Name = "ContentType")]
         public string ContentType { get; set; }
     }
 }

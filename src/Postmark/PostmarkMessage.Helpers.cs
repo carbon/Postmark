@@ -8,7 +8,8 @@ namespace Postmark
     {
         public static PostmarkMessage FromMailMessage(MailMessage message)
         {
-            if (message is null) throw new ArgumentNullException(nameof(message));
+            if (message is null) 
+                throw new ArgumentNullException(nameof(message));
 
             var doc = new PostmarkMessage {
                 From = message.From.ToString(),
@@ -23,7 +24,7 @@ namespace Postmark
             }
 #pragma warning restore CS0618 
 
-            else if (message.ReplyToList.Count > 0)
+            if (message.ReplyToList != null && message.ReplyToList.Count > 0)
             {
                 doc.ReplyTo = message.ReplyToList.ToString();
             }
@@ -42,15 +43,14 @@ namespace Postmark
             {
                 foreach (var view in message.AlternateViews)
                 {
-                    using (var streamReader = new StreamReader(view.ContentStream))
-                    {
-                        var text = streamReader.ReadToEnd();
+                    using var streamReader = new StreamReader(view.ContentStream);
 
-                        switch (view.ContentType.MediaType)
-                        {
-                            case "text/plain": doc.TextBody = text; break;
-                            case "text/html": doc.HtmlBody = text; break;
-                        }
+                    string text = streamReader.ReadToEnd();
+
+                    switch (view.ContentType.MediaType)
+                    {
+                        case "text/plain": doc.TextBody = text; break;
+                        case "text/html": doc.HtmlBody = text; break;
                     }
                 }
             }

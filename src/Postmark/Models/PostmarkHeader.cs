@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace Postmark
 {
@@ -15,10 +14,8 @@ namespace Postmark
             Value = value;
         }
 
-        [DataMember(Name = "Name")]
         public string Name { get; set; }
 
-        [DataMember(Name = "Value")]
         public string Value { get; set; }
     }
 }

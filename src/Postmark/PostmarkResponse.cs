@@ -1,24 +1,22 @@
 ﻿#nullable disable
 
 using System;
-
-using Carbon.Json;
+using System.Text.Json.Serialization;
 
 namespace Postmark
 {
     public class PostmarkResponse
     {
+        [JsonPropertyName("MessageID")]
         public string MessageId { get; set; }
 
         public string To { get; set; }
 
         public long ErrorCode { get; set; }
 
-        public DateTime SubmittedAt { get; set; }
+        public DateTimeOffset SubmittedAt { get; set; }
 
         public string Message { get; set; }
-
-        public static PostmarkResponse Parse(string text) => JsonObject.Parse(text).As<PostmarkResponse>();
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿using System.Net.Mail;
 using System.Text;
-
+using System.Text.Json;
 using Xunit;
 
 namespace Postmark.Tests
@@ -11,18 +11,21 @@ namespace Postmark.Tests
         public void ParseResponse()
         {
             var json = @"{
-	""To"": ""receiver @example.com"",
+	""To"": ""receiver@example.com"",
     ""SubmittedAt"": ""2014-02-17T07:25:01.4178645-05:00"",
 	""MessageID"": ""0a129aee-e1cd-480d-b08d-4f48548ff48d"",
 	""ErrorCode"": 0,
 	""Message"": ""OK""
 }";
 
-            var response = PostmarkResponse.Parse(json);
+            var response = JsonSerializer.Deserialize<PostmarkResponse>(json);
 
+            Assert.Equal("receiver@example.com", response.To);
             Assert.Equal("0a129aee-e1cd-480d-b08d-4f48548ff48d", response.MessageId);
             Assert.Equal(0, response.ErrorCode);
             Assert.Equal("OK", response.Message);
+            Assert.Equal(1392639901417, response.SubmittedAt.ToUnixTimeMilliseconds());
+            Assert.Equal(-5, response.SubmittedAt.Offset.Hours);
         }
  
         [Fact]

@@ -1,4 +1,4 @@
-﻿using Carbon.Json;
+﻿using System.Text.Json;
 
 using Xunit;
 
@@ -20,7 +20,7 @@ namespace Postmark.Tests
   ""Inactive"" : true,
   ""CanActivate"" : true
 }";
-            var bounce = JsonObject.Parse(json).As<Bounce>();
+            var bounce = JsonSerializer.Deserialize<Bounce>(json);
 
             Assert.Equal(42L, bounce.Id);
             Assert.Equal(BounceType.HardBounce, bounce.Type);
@@ -53,10 +53,16 @@ namespace Postmark.Tests
   ""Content"": ""Return-Path: <>\r\nReceived: …""
 }";
 
-            var bounce = JsonObject.Parse(json).As<Bounce>();
+            var bounce = JsonSerializer.Deserialize<Bounce>(json);
 
             Assert.Equal(692560173, bounce.Id);
             Assert.Equal(BounceType.HardBounce, bounce.Type);
+
+            Assert.Equal("2c1b63fe-43f2-4db5-91b0-8bdfa44a9316", bounce.MessageId);
+
+            Assert.True(bounce.CanActivate);
+
+            Assert.Equal(1389820159642, bounce.BouncedAt.ToUnixTimeMilliseconds());
         }
     }
 }
