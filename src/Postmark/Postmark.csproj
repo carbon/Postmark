@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <AssemblyName>Postmark</AssemblyName>
-    <VersionPrefix>1.4.0</VersionPrefix>
-    <TargetFrameworks>netstandard2.0;netcoreapp3.1</TargetFrameworks>
-    <LangVersion>8</LangVersion>
+    <VersionPrefix>1.5.0</VersionPrefix>
+    <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
+    <LangVersion>9</LangVersion>
     <Nullable>enable</Nullable>
 
     <!-- Package Properties-->
@@ -16,8 +16,8 @@
     <PackageTags>postmark</PackageTags>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
-    <PackageReference Include="System.Text.Json" Version="4.7.2" />
+  <ItemGroup Condition=" '$(TargetFramework)' != 'net5.0' ">
+    <PackageReference Include="System.Text.Json" Version="5.0.0" />
   </ItemGroup>
 
 </Project>
