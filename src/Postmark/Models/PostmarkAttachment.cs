@@ -1,6 +1,6 @@
 ﻿namespace Postmark
 {
-    public class PostmarkAttachment
+    public sealed class PostmarkAttachment
     {
 #nullable disable
         public PostmarkAttachment() { }

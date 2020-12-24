@@ -58,7 +58,7 @@ namespace Postmark
                 { "count", take.ToString() }
             };
 
-            if (type != null)
+            if (type is not null)
             {
                 data["type"] = type.Value.ToString();
             }

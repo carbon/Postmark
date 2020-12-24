@@ -2,7 +2,7 @@
 
 namespace Postmark
 {
-    public class PostmarkHeader
+    public sealed class PostmarkHeader
     {
 #nullable disable
         public PostmarkHeader() { }
