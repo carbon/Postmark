@@ -1,9 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postmark", "Postmark\Postmark.csproj", "{FD1F4ABB-4E6E-4D01-97F3-5F3AADD29380}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postmark", "Postmark\Postmark.csproj", "{FD1F4ABB-4E6E-4D01-97F3-5F3AADD29380}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Postmark.Tests", "Postmark.Tests\Postmark.Tests.csproj", "{D9B55EEF-0294-45B1-B6B6-9750E55E12BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Postmark.Tests", "Postmark.Tests\Postmark.Tests.csproj", "{D9B55EEF-0294-45B1-B6B6-9750E55E12BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5DD930AB-0426-499D-8EEB-D6CAB3D48A68}
 	EndGlobalSection
 EndGlobal
