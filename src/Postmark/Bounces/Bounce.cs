@@ -8,22 +8,22 @@ namespace Postmark
     public sealed class Bounce
     {
         [JsonPropertyName("ID")]
-        public long Id { get; set; }
+        public long Id { get; init; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public BounceType Type { get; set; }
+        public BounceType Type { get; init; }
 
-        public string Email { get; set; }
+        public string Email { get; init; }
 
-        public DateTimeOffset BouncedAt { get; set; }
+        public DateTimeOffset BouncedAt { get; init; }
 
-        public string Details { get; set; }
+        public string Details { get; init; }
 
-        public bool Inactive { get; set; }
+        public bool Inactive { get; init; }
 
-        public bool CanActivate { get; set; }
+        public bool CanActivate { get; init; }
 
         [JsonPropertyName("MessageID")]
-        public string MessageId { get; set; }
+        public string MessageId { get; init; }
     }
 }

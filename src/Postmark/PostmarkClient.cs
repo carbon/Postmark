@@ -48,7 +48,7 @@ namespace Postmark
 
             var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 
-            return await JsonSerializer.DeserializeAsync<PostmarkResponse>(responseStream).ConfigureAwait(false);
+            return (await JsonSerializer.DeserializeAsync<PostmarkResponse>(responseStream).ConfigureAwait(false))!;
         }
 
         public async Task<GetBouncesResult> GetBouncesAsync(int skip, int take, BounceType? type)
@@ -71,7 +71,7 @@ namespace Postmark
 
             var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 
-            return await JsonSerializer.DeserializeAsync<GetBouncesResult>(responseStream).ConfigureAwait(false);
+            return (await JsonSerializer.DeserializeAsync<GetBouncesResult>(responseStream).ConfigureAwait(false))!;
         }
 
         private static string Serialize(Dictionary<string, string> data)
