@@ -13,10 +13,10 @@
             ContentType = contentType;
         }
 
-        public string Name { get; set; }
+        public string Name { get; init; }
 
-        public byte[] Content { get; set; }
+        public byte[] Content { get; init; }
 
-        public string ContentType { get; set; }
+        public string ContentType { get; init; }
     }
 }

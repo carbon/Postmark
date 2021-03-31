@@ -1,44 +1,34 @@
 ﻿#nullable disable
 
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 
 namespace Postmark
 {
     public partial class PostmarkMessage
     {
-        [DataMember(IsRequired = true)]
         public string From { get; set; }
 
-        [DataMember(IsRequired = true)]
         public string To { get; set; }
 
-        [DataMember(EmitDefaultValue = false)]
         public string Cc { get; set; }
 
-        [DataMember(EmitDefaultValue = false)]
         public string Subject { get; set; }
 
-        [DataMember(EmitDefaultValue = false)]
-        public string Tag { get; set; }
+#nullable enable
 
-        [DataMember(EmitDefaultValue = false)]
-        public string HtmlBody { get; set; }
+        public string? Tag { get; set; }
 
-        [DataMember(EmitDefaultValue = false)]
-        public string TextBody { get; set; }
+        public string? HtmlBody { get; set; }
 
-        [DataMember(EmitDefaultValue = false)]
-        public string ReplyTo { get; set; }
+        public string? TextBody { get; set; }
 
-        [DataMember(EmitDefaultValue = false)]
+        public string? ReplyTo { get; set; }
+
         public bool TrackOpens { get; set; }
 
-        [DataMember(EmitDefaultValue = false)]
-        public List<PostmarkHeader> Headers { get; set; } = new List<PostmarkHeader>();
+        public List<PostmarkHeader> Headers { get; set; } = new ();
 
-        [DataMember(EmitDefaultValue = false)]
-        public List<PostmarkAttachment> Attachments { get; set; } = new List<PostmarkAttachment>();
+        public List<PostmarkAttachment> Attachments { get; set; } = new ();
     }
 }
 

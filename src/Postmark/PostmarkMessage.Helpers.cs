@@ -18,7 +18,7 @@ namespace Postmark
             };
 
 #pragma warning disable CS0618 // Type or member is obsolete
-            if (message.ReplyTo != null)
+            if (message.ReplyTo is not null)
             {
                 doc.ReplyTo = message.ReplyTo.ToString();
             }
@@ -39,7 +39,7 @@ namespace Postmark
             }
 
             // Alternate view support
-            if (message.AlternateViews != null)
+            if (message.AlternateViews is not null)
             {
                 foreach (var view in message.AlternateViews)
                 {
@@ -55,7 +55,7 @@ namespace Postmark
                 }
             }
 
-            if (message.Headers != null)
+            if (message.Headers is not null)
             {
                 foreach (var key in message.Headers.AllKeys)
                 {
@@ -65,7 +65,7 @@ namespace Postmark
                     }
                     else
                     {
-                        doc.Headers.Add(new PostmarkHeader(key, message.Headers[key]));
+                        doc.Headers.Add(new PostmarkHeader(key!, message.Headers[key]!));
                     }
                 }
             }

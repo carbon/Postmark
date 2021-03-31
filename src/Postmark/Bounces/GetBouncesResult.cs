@@ -6,8 +6,8 @@ namespace Postmark
 {
     public sealed class GetBouncesResult
     {
-        public int TotalCount { get; set; }
+        public int TotalCount { get; init; }
 
-        public List<Bounce> Bounces { get; set; }
+        public List<Bounce> Bounces { get; init; }
     }
 }

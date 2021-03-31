@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Mime;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Postmark
@@ -13,6 +15,11 @@ namespace Postmark
 
         private readonly HttpClient httpClient;
 
+        private static readonly JsonSerializerOptions jso = new()
+        {
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+
         public PostmarkClient(string apiKey)
         {
             if (apiKey is null)
@@ -22,13 +29,11 @@ namespace Postmark
 
             this.httpClient = new HttpClient {
                 DefaultRequestHeaders = {
-                    { "Accept", "application/json" },
+                    { "Accept", MediaTypeNames.Application.Json },
                     { "X-Postmark-Server-Token", apiKey }
                 }
             };
-        }
-
-        private static readonly JsonSerializerOptions jso = new JsonSerializerOptions { IgnoreNullValues = true };
+        }    
 
         public async Task<PostmarkResponse> SendMessageAsync(PostmarkMessage message)
         {
@@ -40,7 +45,7 @@ namespace Postmark
 
             request.Content = new ByteArrayContent(content) {
                 Headers = {
-                    { "Content-Type", "application/json" }
+                    { "Content-Type", MediaTypeNames.Application.Json }
                 }
             };
 

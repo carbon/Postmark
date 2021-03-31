@@ -8,15 +8,15 @@ namespace Postmark
     public class PostmarkResponse
     {
         [JsonPropertyName("MessageID")]
-        public string MessageId { get; set; }
+        public string MessageId { get; init; }
 
-        public string To { get; set; }
+        public string To { get; init; }
 
-        public long ErrorCode { get; set; }
+        public long ErrorCode { get; init; }
 
-        public DateTimeOffset SubmittedAt { get; set; }
+        public DateTimeOffset SubmittedAt { get; init; }
 
-        public string Message { get; set; }
+        public string Message { get; init; }
     }
 }
 
