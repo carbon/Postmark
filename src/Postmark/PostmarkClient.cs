@@ -13,10 +13,9 @@ namespace Postmark
     {
         private const string endpoint = "https://api.postmarkapp.com";
 
-        private readonly HttpClient httpClient;
+        private readonly HttpClient _httpClient;
 
-        private static readonly JsonSerializerOptions jso = new()
-        {
+        private static readonly JsonSerializerOptions jso = new() {
             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
         };
 
@@ -27,7 +26,7 @@ namespace Postmark
                 throw new ArgumentNullException(nameof(apiKey));
             }
 
-            this.httpClient = new HttpClient {
+            _httpClient = new HttpClient {
                 DefaultRequestHeaders = {
                     { "Accept", MediaTypeNames.Application.Json },
                     { "X-Postmark-Server-Token", apiKey }
@@ -49,7 +48,7 @@ namespace Postmark
                 }
             };
 
-            using var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+            using var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 
             var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 
@@ -72,7 +71,7 @@ namespace Postmark
 
             var request = new HttpRequestMessage(HttpMethod.Get, url);
 
-            using var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+            using var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 
             var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 
